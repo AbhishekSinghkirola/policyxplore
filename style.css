@@ -1,0 +1,442 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
+#contact span {
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+
+#contact span a {
+    text-decoration: none;
+    color: white;
+}
+
+#contact span a:hover {
+    color: #0893ee;
+    transition: 0.4s;
+}
+
+#nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+#navhover li a {
+    font-size: 0.8rem;
+    padding: -0.1rem;
+}
+
+#navhover li a:hover {
+    color: #0893ee;
+    transition: 0.4s;
+}
+
+#banner {
+    background-color: #3787fb;
+}
+
+#banner form {
+    background-color: white;
+    border-radius: 4px;
+}
+
+#banner form input {
+    padding: 0.6rem;
+    border: 1px solid rgb(231, 231, 231);
+    width: 100%;
+    margin-top: 1.2rem;
+    outline: none;
+}
+
+#banner form select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgb(231, 231, 231);
+    margin-top: 1.2rem;
+    outline: none;
+}
+
+#banner form #checkbox {
+    width: 3%;
+    display: inline;
+}
+
+#banner form label {
+    display: inline;
+}
+
+#banner form #formbtn {
+    background-color: #008bd3;
+    color: white;
+}
+
+#banner form #formbtn:hover {
+    background-color: #0084c6;
+    transition: 0.4s;
+}
+#bannergif{
+    height: 526.8px;
+    
+}
+
+#text p {
+    font-size: 0.8rem;
+}
+
+
+.banner-section{
+    background-image:url('assets/images/banner/mainbanner.jpg');
+     width: 100%;
+     height:auto;
+    background-size:cover;
+    background-repeat:no-repeat;
+   
+}
+.box {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.box img:nth-child(1) {
+    position: absolute;
+}
+
+.box img:nth-child(2) {
+    opacity: 0;
+}
+
+#btn1 {
+    border: none;
+    background-color: #008bd3;
+    color: white;
+}
+
+#btn2 {
+    border: none;
+    background-color: #edeef2;
+    color: white;
+}
+
+#btn2:hover {
+    background-color: #0084c6;
+    transition: 0.4s;
+}
+
+#claims {
+    background-image: url(assets/images/banner/parallax-claim.jpg);
+    width: 100%;
+    overflow-x: hidden;
+}
+
+#claimicon i {
+    color: rgba(255, 255, 255, 0.736);
+    font-size: 2.3rem;
+}
+
+#claimicon h4 {
+    color: white;
+}
+
+#claimicon h4{
+    color: rgba(255, 255, 255, 0.662);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.505);
+    margin-top: 20px;
+}
+
+#review {
+    background-color: #edeef2;
+    width: 100%;
+}
+
+footer {
+    background-color: #333333;
+    width: 100%;
+}
+
+#footer-cont p {
+    color: gray;
+    font-size: 0.8rem;
+}
+
+#footer-cont h5 {
+    color: white;
+}
+
+#footer-cont p a {
+    text-decoration: none;
+    color: gray;
+}
+
+#footer-cont a:hover {
+    color: #008bd3;
+    transition: 0.4s;
+}
+
+.icon a {
+    padding: 0.5rem;
+}
+
+.icon a i {
+    color: #b2b2b2;
+}
+
+.icon a i:hover {
+    color: #008bd3;
+    transition: 0.8s;
+}
+
+#card:hover {
+    border: 1px solid #008bd3;
+    transition: 0.8s;
+}
+
+#card:hover p {
+    color: #008bd3;
+    transition: 0.8s;
+}
+
+#stats {
+    background-color: #edeef2;
+    width: 100%;
+}
+
+#stats h2 {
+    font-family: sans-serif;
+}
+
+#stats .circle {
+    background-color: white;
+    border-radius: 50%;
+    width: 40%;
+    margin: auto;
+    padding: 2.5rem 0.8rem;
+}
+
+#stats .circle h2 {
+    font-size: 26px;
+    
+}
+
+#stats #count1:hover{
+    background-color: #f27935;
+    color: white;
+    transition: 0.4s;
+}
+
+#stats #count2:hover{
+    background-color: #6ca04a;
+    color: white;
+    transition: 0.4s;
+}
+
+#stats #count3:hover{
+    background-color: #fdc210;
+    color: white;
+    transition: 0.4s;
+}
+
+#stats #count4:hover{
+    background-color: #db2029;
+    color: white;
+    transition: 0.4s;
+}
+
+
+#formcontainer input {
+    width: 100%;
+    border: 1px solid rgb(207, 207, 207);
+    padding: 10px 30px;
+    outline: none;
+    border-radius: 3px;
+}
+
+#formcontainer #formbtn {
+    border: none;
+    background-color: #008bd3;
+    color: white;
+    font-size: 0.6rem;
+    padding: 15px;
+}
+#formcontainer{
+    background-color: #edeef2;
+    padding: 2rem;
+    /* position: absolute;
+    left: 25%; */
+    width: 79%;
+    padding: 2rem;
+    margin: auto;
+    filter: drop-shadow(0px 1px 1px rgba(205, 205, 205, 0.595));
+}
+#last a {
+    text-decoration: none;
+    color: black;
+}
+
+#last a:hover {
+    color: white;
+}
+
+#back:hover{
+    background-color: #015c89;
+    transition: 0.4s;
+}
+#back2:hover{
+    background-color: #f27935;
+    transition: 0.4s;
+}
+#back3:hover{
+    background-color: #6ca04a;
+    transition: 0.4s;
+}
+
+#beforefooter {
+    background-color: #edeef2;
+    width: 100%;
+}
+
+#beforefooter i {
+    color: white;
+    font-size: 1.8rem;
+}
+#info-3 a{
+    text-decoration: none;
+    color: gray;
+    padding: 0.8rem;
+    font-size: 0.8rem;
+}
+#info-3 a:hover{
+    color: #008bd3;
+    transition: 0.4s;
+}
+#top{
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 1000;
+    border: none;
+    background: none;
+}
+
+/* about us  */
+
+#aboutus{
+    background-image: url(assets/images/banner/about.jpg);
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+#aboutbtn{
+    border: none;
+    background-color: #0893ee;
+    color: white;
+    padding: 15px 30px;
+}
+
+/* contact us */
+
+#contactus{
+    background-image: url(assets/images/banner/contact.jpg);
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+/* privacy policy section */
+
+#privacybanner{
+    background-image: url(assets/images/banner/privacypolicy.jpg);
+    width: 100%;
+    height: 300px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+
+}
+
+@media screen and (max-width: 850px) {
+    #navlogo img {
+        width: 100%;
+    }
+
+    #navbtn {
+        background-color: #008bd3;
+        width: 100%;
+    }
+
+    #contact span {
+        padding: 0.2rem;
+        font-size: 0.6rem;
+    }
+    #formcontainer input{
+        padding: 5px;
+        width: 100%;
+    }
+
+    #formcontainer{
+       width: 80%;
+       /* left: 10%; */
+    }
+    #info-3 a{
+        font-size: 0.6rem;
+        padding: 0.1rem;
+    }
+    #small{
+        font-size: 0.7rem;
+
+    }
+
+    #navlogo img{
+        width: 123%;
+    }
+    /* about us  */
+
+    #aboutus{
+        height: 100px;
+    }
+
+    /* contact us */
+
+    #contactus{
+        height: 100px;
+    }
+
+    /* privacy policy */
+
+    #privacybanner{
+        height: 100px;
+    }
+     #bannergif{
+        height: 263px;
+    }
+    
+
+}
+
+@media screen and (min-width: 820px){
+    #navlogo img{
+        width: 60%;
+    }
+    
+    #stats .circle {
+    background-color: white;
+    border-radius: 50%;
+    width: 30%;
+    margin: auto;
+    padding: 3.5rem 0.8rem;
+}
+#bannergif{
+    height: 550.8px;
+}
+
+}
