@@ -10,21 +10,21 @@
                     document.write(new Date().getFullYear());
                   </script>
                   , made with ❤️ by
-                  <a href="https://themeselection.com" target="_blank" class="footer-link fw-bolder">ThemeSelection</a>
+                  <a href="https://www.hedkeyindia.com/" target="_blank" class="footer-link fw-bolder">Hedkey India Pvt. ltd.</a>
                 </div>
                 <div>
-                  <a href="https://themeselection.com/license/" class="footer-link me-4" target="_blank">License</a>
-                  <a href="https://themeselection.com/" target="_blank" class="footer-link me-4">More Themes</a>
+                  <a href="https://www.hedkeyindia.com/" class="footer-link me-4" target="_blank">License</a>
+                  <a href="https://www.hedkeyindia.com/" target="_blank" class="footer-link me-4">More Themes</a>
 
                   <a
-                    href="https://themeselection.com/demo/sneat-bootstrap-html-admin-template/documentation/"
+                    href="https://www.hedkeyindia.com/"
                     target="_blank"
                     class="footer-link me-4"
                     >Documentation</a
                   >
 
                   <a
-                    href="https://github.com/themeselection/sneat-html-admin-template-free/issues"
+                    href="https://www.hedkeyindia.com/"
                     target="_blank"
                     class="footer-link me-4"
                     >Support</a
@@ -70,6 +70,8 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+   <!-- <script src="assets/js/tinymce/js/tinymce/tinymce.min.js"></script>-->
+   <!--<script src="assets/js/tinymce/js/tinymce/init.tinymce.js"></script>-->
 
     <script type="text/javascript">
 
@@ -107,6 +109,10 @@ myModal.addEventListener('shown.bs.modal', () => {
   myInput.focus()
 })
 </script>
+<script>
+  CKEDITOR.replace('editor');
+</script>
+
   </body>
 </html>
 

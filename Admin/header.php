@@ -10,6 +10,57 @@ ob_start();
     header('location:login.php');
     die();
   }
+
+  // prx(basename($_SERVER['PHP_SELF'])) ;
+  $string = basename($_SERVER['PHP_SELF']);
+  $index_active ='';
+  $blog_active ='';
+  $category_active ='';
+  $query_active ='';
+  $help_active ='';
+  $testtimonial_active ='';
+  $about_active ='';
+  $faq_active ='';
+  $faq_category_active ='';
+  $website_active ='';
+  switch($string) {
+    case "index.php" :
+      $index_active = "active";
+      break;
+    case "blog.php" :
+      $blog_active = "active";
+      break;
+    case "category.php" :
+      $category_active = "active";
+      break;
+    case "query-details.php" :
+      $query_active = "active";
+      break;
+    case "help.php" :
+      $help_active = "active";
+      break;
+    case "testimonial.php" :
+      $testtimonial_active = "active";
+      break;
+    case "about.php" :
+      $about_active = "active";
+      break;
+    case "faq.php" :
+      $faq_active = "active";
+      break;
+    case "faq-page.php" :
+      $faq_page_active = "active";
+      break;
+    case "faq-category.php" :
+      $faq_category_active = "active";
+      break;
+    case "website-settings.php" :
+      $website_active = "active";
+      break;
+    default :
+    $active = '';
+  }
+
 ?>
 
 
@@ -39,6 +90,7 @@ ob_start();
   <link rel="stylesheet" href="assets/vendor/css/core.css" class="template-customizer-core-css" />
   <link rel="stylesheet" href="assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
   <link rel="stylesheet" href="assets/css/demo.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
 
   <!-- Vendors CSS -->
   <link rel="stylesheet" href="assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
@@ -61,6 +113,7 @@ ob_start();
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="assets/css/richText_editor.css" rel="stylesheet" />
+<script src="assets/js/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -86,7 +139,7 @@ ob_start();
 
         <ul class="menu-inner py-1">
           <!-- Dashboard -->
-          <li class="menu-item active">
+          <li class="menu-item <?php echo $index_active ;?>">
               <a href="index.php" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -132,55 +185,61 @@ ob_start();
           <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Pages</span>
             </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $blog_active ;?>">
             <a href="blog.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">Blogs</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $category_active ;?>">
             <a href="category.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">Categories</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $query_active ;?>">
             <a href="query-details.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">Query Details</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $help_active ;?>">
             <a href="help.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">Help Querries</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $testtimonial_active ;?>">
             <a href="testimonial.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">Testimonials</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $about_active ;?>">
             <a href="about.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">About Us</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $faq_active ;?>">
             <a href="faq.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">FAQ</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $faq_page_active ;?>">
+            <a href="faq-page.php" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-dock-top"></i>
+              <div data-i18n="Account Settings">FAQ Page</div>
+            </a>
+          </li>
+          <li class="menu-item <?php echo $faq_category_active ;?>">
             <a href="faq-category.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">FAQ Category</div>
             </a>
           </li>
-          <li class="menu-item">
+          <li class="menu-item <?php echo $website_active ;?>">
             <a href="website-settings.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-dock-top"></i>
               <div data-i18n="Account Settings">Website Settings</div>

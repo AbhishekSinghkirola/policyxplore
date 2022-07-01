@@ -8,6 +8,7 @@ if(isset($_GET['id'])) {
     $res = mysqli_query($con,"select blog.*,category.* from blog left join category on blog.category=category.cat_id where blog.id=$id") or die("Select Query Failed!!");
     $row =mysqli_fetch_assoc($res);
 }
+
 ?>
 
     <!-- single page content section -->
@@ -29,7 +30,7 @@ if(isset($_GET['id'])) {
                             
                         </div>
                         <div class="col-12 col-lg-12 col-md-12 col-sm-12">
-                            <img src="Admin/BlogImages/<?php echo $row['blog_image']; ?>" alt="" class="img-fluid">
+                            <img src="Admin/BlogImages/<?php echo $row['blog_image']; ?>" alt="<?php echo $row['alt']; ?>" class="img-fluid">
 
                             <div class="text mt-3">
                                 <small class="mt-3"><?php echo $row['blog_desc']; ?></small>
@@ -78,7 +79,7 @@ if(isset($_GET['id'])) {
              <div class="card p-3">
                 <div class="row">
                     <div class="col-12 col-lg-4 col-md-12 col-sm-12">
-                        <img src="Admin/BlogImages/<?php echo $row1['blog_image']; ?>" alt="" class="img-fluid">
+                        <img src="Admin/BlogImages/<?php echo $row1['blog_image']; ?>" alt="<?php echo $row1['alt']; ?>" class="img-fluid">
                     </div>
                     <div class="col-12 col-lg-8 col-md-12 col-sm-12">
                         <div class="text">

@@ -477,7 +477,7 @@ if (isset($_POST['submit_help'])) {
         ?>
             <div class="col-12 col-lg-4 col-md-4 col-sm-12">
                 <div class="height" style="height: 233px; overflow:hidden;">
-                    <a href="#">
+                    <a href="singleblog.php?id=<?php echo $row_blog['id']; ?>">
                         <img src="Admin/BlogImages/<?php echo $row_blog['blog_image']; ?>" alt="" class="img-fluid">
                     </a>
                 </div>
@@ -587,7 +587,9 @@ if (isset($_POST['submit_help'])) {
             ?>
                     <div class="carousel-item active">
                         <div class="text-center">
-                            <img src="assets/images/reviews/7-image.png" alt="" style="border-radius: 50%;" width="10%">
+                           
+                            <img src="Admin/TestimonialImages/<?php echo $row1['testimonial_image']; ?>" alt="<?php echo $row1['alt']; ?>" style="border-radius: 50%;" width="180px" height="180px">
+                            
                             <div class="star mt-3">
                                 <i class="fa-solid fa-star" style="color: yellow;"></i>
                                 <i class="fa-solid fa-star" style="color: yellow;"></i>
@@ -596,7 +598,11 @@ if (isset($_POST['submit_help'])) {
                                 <i class="fa-solid fa-star" style="color: yellow;"></i>
                             </div>
                             <div class="container">
+                                <div class="row">
+                                    <div class="col-12 col-lg-8 col-md-8 m-auto">
                                 <p class="text-white mt-3"><?php echo $row1['testimonial_title']; ?></p>
+                                </div>
+                                </div>
                             </div>
 
                             <p class="text-white"><b><?php echo $row1['author']; ?></b></p>
@@ -609,7 +615,9 @@ if (isset($_POST['submit_help'])) {
                 ?>
                     <div class="carousel-item">
                         <div class="text-center">
-                            <img src="assets/images/reviews/2-image.jpg" alt="" style="border-radius: 50%;" width="10%">
+                           
+                            <img src="Admin/TestimonialImages/<?php echo $row1['testimonial_image']; ?>" alt="<?php echo $row1['alt']; ?>" style="border-radius: 50%;" width="180px" height="180px">
+                           
                             <div class="star mt-3">
                                 <i class="fa-solid fa-star" style="color: yellow;"></i>
                                 <i class="fa-solid fa-star" style="color: yellow;"></i>
@@ -618,7 +626,11 @@ if (isset($_POST['submit_help'])) {
                                 <i class="fa-solid fa-star" style="color: yellow;"></i>
                             </div>
                             <div class="container">
+                              <div class="row">
+                                    <div class="col-12 col-lg-8 col-md-8 m-auto">
                                 <p class="text-white mt-3"><?php echo $row1['testimonial_title']; ?></p>
+                                </div>
+                                </div>
                             </div>
 
                             <p class="text-white"><b><?php echo $row1['author']; ?></b></p>

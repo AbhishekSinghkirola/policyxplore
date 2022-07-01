@@ -25,6 +25,7 @@ $row_website =mysqli_fetch_assoc($res_website);
     <!-- jquery cdnj -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+   
 
     <title>Policyxplore</title>
 </head>
@@ -56,7 +57,7 @@ $row_website =mysqli_fetch_assoc($res_website);
 
     <nav class="navbar navbar-expand-lg navbar-light bg-white" id="nav">
         <div class="container p-2" style="width: 80%;">
-            <a href="index.php" class="navbar-brand" id="navlogo"><img src="Admin/WebsiteSettings/<?php echo $row_website['logo'];?>" alt="" width="60%"></a>
+            <a href="index.php" class="navbar-brand" id="navlogo"><img src="Admin/WebsiteSettings/<?php echo $row_website['logo'];?>" alt="<?php echo $row_website['alt']; ?>" width="60%"></a>
             <div id="navbtn">
                 <!-- <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#clps" style="border: none; outline: none;"> 
                     <i class="fa-solid fa-bars"></i>
@@ -67,7 +68,24 @@ $row_website =mysqli_fetch_assoc($res_website);
                 <ul class="navbar-nav ms-auto" id="navhover">
                     <li class="nav-item"><a href="index.php" class="nav-link"><b>Home</b></a></li>
                     <li class="nav-item"><a href="about.php" class="nav-link"><b>About</b></a></li>
-                    <li class="nav-item"><a href="blog.php" class="nav-link"><b>Blog</b></a></li>
+               <li class="nav-item dropdown"><a href="blog.php" class="nav-link dropdown-toggle"
+                            data-bs-toggle="dropdown" data-bs-target="#drp"><b>Blog</b></a>
+
+
+                        <ul class="dropdown-menu" id="drp" style="margin-top:2rem">
+                            <?php
+                                $dropdown = mysqli_query($con,"select * from category");
+                                while($dropdown_row = mysqli_fetch_assoc($dropdown)) {
+                                    
+                            ?>
+                            <li><a href="blog.php?cat_id=<?php echo $dropdown_row['cat_id']; ?>" class="dropdown-item text-dark"><?php echo $dropdown_row['cat_title']; ?></a></li>
+                            <li class="dropdown-divider"></li>
+                            <?php } ?>
+                            <!--<li><a href="#" class="dropdown-item text-dark">Life Insurance</a></li>-->
+                        </ul>
+
+
+                    </li>
                     <li class="nav-item"><a href="faq.php" class="nav-link"><b>FAQ</b></a></li>
                     <li class="nav-item"><a href="contact.php" class="nav-link"><b>Contact</b></a></li>
 

@@ -24,7 +24,7 @@ require("header.php");
 
     <div class="row mt-2">
         <div class="col-12 col-lg-6 col-md-12 col-sm-12 mt-4">
-            <img src="Admin/AboutImages/<?php echo $row['img1']; ?>" alt="" class="img-fluid">
+            <img src="Admin/AboutImages/<?php echo $row['img1']; ?>" alt="<?php echo $row['alt1']; ?>" class="img-fluid">
 
 
         </div>
@@ -48,7 +48,7 @@ require("header.php");
 
         </div>
         <div class="col-12 col-lg-6 col-md-12 col-sm-12 mt-4">
-            <img src="Admin/AboutImages/<?php echo $row['img2']; ?>" alt="" class="img-fluid">
+            <img src="Admin/AboutImages/<?php echo $row['img2']; ?>" alt="<?php echo $row['alt2']; ?>" class="img-fluid">
 
         </div>
     </div>

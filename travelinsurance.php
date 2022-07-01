@@ -11,6 +11,7 @@ require("header.php");
             <div class="row">
                 <div class="col-12 col-lg-5 col-md-12 col-sm-12 m-auto">
                     <form action="" class="p-5 w-100 m-auto" id="form">
+                        <h5 class="pb-2" style="color: #0893ee">Travel Insurance</h5>
                         <h4><b>Compare and Save Money</b></h4>
                         <input type="text" name="" id="" placeholder="Full Name">
                         <br>

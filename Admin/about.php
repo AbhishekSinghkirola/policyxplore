@@ -10,6 +10,8 @@ if (isset($_POST['submit'])) {
     $desc2 = get_safe_value($con, $_POST['desc2']);
     $h3 = get_safe_value($con, $_POST['h3']);
     $desc3 = get_safe_value($con, $_POST['desc3']);
+    $alt1 = get_safe_value($con, $_POST['alt1']);
+    $alt2 = get_safe_value($con, $_POST['alt2']);
     $old_img1 = get_safe_value($con, $_POST['old_img1']);
     $old_img2 = get_safe_value($con, $_POST['old_img2']);
 
@@ -20,13 +22,13 @@ if (isset($_POST['submit'])) {
 
     if ($img1 != '' && $img2 != '') {
         if ($image_type1 != '' && $image_type2 != '') {
-            if ($image_type1 != 'image/png' && $image_type1 != 'image/jpg' && $image_type1 != 'image/jpeg') {
+            if ($image_type1 != 'image/png' && $image_type1 != 'image/jpg' && $image_type1 != 'image/jpeg' && $image_type1 != 'image/webp') {
                 $msg = "Please select only png,jpg and jpeg image formate";
-            }elseif($image_type2 != 'image/png' && $image_type2 != 'image/jpg' && $image_type2 != 'image/jpeg') {
+            }elseif($image_type2 != 'image/png' && $image_type2 != 'image/jpg' && $image_type2 != 'image/jpeg' && $image_type2 != 'image/webp') {
                 $msg = "Please select only png,jpg and jpeg image formate";
 
             } else {
-                $data = mysqli_query($con, "update about set h1 = '$h1',desc1 = '$desc1', h2 = '$h2', desc2 = '$desc2', h3 = '$h3', desc3 = '$desc3', img1 = '$img1',img2 = '$img2'") or die("update Query Failed!!");
+                $data = mysqli_query($con, "update about set h1 = '$h1',desc1 = '$desc1', h2 = '$h2', desc2 = '$desc2', h3 = '$h3', desc3 = '$desc3', img1 = '$img1',img2 = '$img2',alt1 = '$alt1',alt2 = '$alt2'") or die("update Query Failed!!");
                 if ($data) {
                     move_uploaded_file($_FILES['img1']['tmp_name'], "AboutImages/$img1");
                     move_uploaded_file($_FILES['img2']['tmp_name'], "AboutImages/$img2");
@@ -38,10 +40,10 @@ if (isset($_POST['submit'])) {
         }
     }elseif ($img1 != '') {
         if ($image_type1 != '') {
-            if ($image_type1 != 'image/png' && $image_type1 != 'image/jpg' && $image_type1 != 'image/jpeg') {
+            if ($image_type1 != 'image/png' && $image_type1 != 'image/jpg' && $image_type1 != 'image/jpeg' && $image_type1 != 'image/webp') {
                 $msg = "Please select only png,jpg and jpeg image formate";
             } else {
-                $data = mysqli_query($con, "update about set h1 = '$h1',desc1 = '$desc1', h2 = '$h2', desc2 = '$desc2', h3 = '$h3', desc3 = '$desc3', img1 = '$img1'") or die("update Query Failed!!");
+                $data = mysqli_query($con, "update about set h1 = '$h1',desc1 = '$desc1', h2 = '$h2', desc2 = '$desc2', h3 = '$h3', desc3 = '$desc3', img1 = '$img1',alt1 = '$alt1',alt2 = '$alt2'") or die("update Query Failed!!");
                 if ($data) {
                     move_uploaded_file($_FILES['img1']['tmp_name'], "AboutImages/$img1");
                     unlink("AboutImages/$old_img1");
@@ -51,10 +53,10 @@ if (isset($_POST['submit'])) {
         }
     }elseif ($img2 != '') {
         if ($image_type2 != '') {
-            if ($image_type2 != 'image/png' && $image_type2 != 'image/jpg' && $image_type2 != 'image/jpeg') {
+            if ($image_type2 != 'image/png' && $image_type2 != 'image/jpg' && $image_type2 != 'image/jpeg' && $image_type2 != 'image/webp') {
                 $msg = "Please select only png,jpg and jpeg image formate";
             } else {
-                $data = mysqli_query($con, "update about set h1 = '$h1',desc1 = '$desc1', h2 = '$h2', desc2 = '$desc2', h3 = '$h3', desc3 = '$desc3', img2 = '$img2'") or die("update Query Failed!!");
+                $data = mysqli_query($con, "update about set h1 = '$h1',desc1 = '$desc1', h2 = '$h2', desc2 = '$desc2', h3 = '$h3', desc3 = '$desc3', img2 = '$img2',alt1 = '$alt1',alt2 = '$alt2'") or die("update Query Failed!!");
                 if ($data) {
                     move_uploaded_file($_FILES['img2']['tmp_name'], "AboutImages/$img2");
                     unlink("AboutImages/$old_img2");
@@ -64,7 +66,7 @@ if (isset($_POST['submit'])) {
         }
     }
      else {
-        mysqli_query($con, "update about set h1 = '$h1',desc1 = '$desc1', h2 = '$h2', desc2 = '$desc2', h3 = '$h3', desc3 = '$desc3'") or die("update Query Failed!!");
+        mysqli_query($con, "update about set h1 = '$h1',desc1 = '$desc1', h2 = '$h2', desc2 = '$desc2', h3 = '$h3', desc3 = '$desc3',alt1 = '$alt1',alt2 = '$alt2'") or die("update Query Failed!!");
         header('location: about.php');
     }
 }
@@ -152,6 +154,12 @@ if ($msg != '') {
                                 <input class="form-control" type="file" id="formFile" name="img1">
                             </div>
                     </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-name">Alternative text (Image1)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="basic-default-name" name="alt1" value="<?php echo $row['alt1']; ?>" />
+                        </div>
+                    </div>
                     <div class="row mb-3 ">
                         <label class="col-sm-2 col-form-label align-self-center" for="formFile">Image 2</label>
                         <div class="col-sm-10">
@@ -165,6 +173,12 @@ if ($msg != '') {
         <input class="form-control" type="file" id="formFile" name="img2">
     </div>
 </div>
+<div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-name">Alternative text (Image2)</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="basic-default-name" name="alt2" value="<?php echo $row['alt2']; ?>" />
+                        </div>
+                    </div>
                     <input type="hidden" name="old_img1" value="<?php echo $row['img1']; ?>">
                     <input type="hidden" name="old_img2" value="<?php echo $row['img2']; ?>">
 

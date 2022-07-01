@@ -15,22 +15,25 @@ if (isset($_GET['page'])) {
 
 <div class="container mt-5 pb-5" style="width: 80%;">
     <div class="row">
-        <?php
+       
+       
+ <?php
         if (isset($_GET['id'])) {
             $id = get_safe_value($con, $_GET['id']);
             $res4 = mysqli_query($con, "select blog.*,category.* from blog left join category on blog.category=category.cat_id where category = $id order by blog.id desc ");
+            ?>
+             <div class="col-12 col-lg-8 col-md-12 col-sm-12">
+                <?php
             if (mysqli_num_rows($res4) > 0) {
                 while ($row4 = mysqli_fetch_assoc($res4)) {
 
                 
         
         ?>
-        <div class="col-12 col-lg-8 col-md-12 col-sm-12">
-
             <div class="card p-4">
                 <div class="row">
                     <div class="col-12 col-lg-4 col-md-12 col-sm-12">
-                        <img src="Admin/BlogImages/<?php echo $row4['blog_image']; ?>" alt="" class="img-fluid">
+                        <img src="Admin/BlogImages/<?php echo $row4['blog_image']; ?>" alt="<?php echo $row4['alt']; ?>" class="img-fluid">
                     </div>
                     <div class="col-12 col-lg-8 col-md-12 col-sm-12">
                         <div class="text">
@@ -67,14 +70,84 @@ if (isset($_GET['page'])) {
             </div>
 
 
-
+        <?php
+                }
+            }
+            ?>
 
 
         </div>
         <?php
-                }
-            }
-        }else {
+
+        }elseif (isset($_GET['cat_id'])) {
+            $cat_id = get_safe_value($con, $_GET['cat_id']);
+            $res4 = mysqli_query($con, "select blog.*,category.* from blog left join category on blog.category=category.cat_id where category = $cat_id order by blog.id desc ");
+            
+
+        ?>
+<div class="col-12 col-lg-8 col-md-12 col-sm-12">
+    <?php 
+if (mysqli_num_rows($res4) > 0) {
+    while ($row4 = mysqli_fetch_assoc($res4)) {
+    ?>
+
+<div class="card p-4">
+    <div class="row">
+        <div class="col-12 col-lg-4 col-md-12 col-sm-12">
+            <img src="Admin/BlogImages/<?php echo $row4['blog_image']; ?>" alt="<?php echo $row4['alt']; ?>" class="img-fluid">
+        </div>
+        <div class="col-12 col-lg-8 col-md-12 col-sm-12">
+            <div class="text">
+                <a href="singleblog.php?id=<?php echo $row4['id']; ?>" class="text-decoration-none">
+                    <h4 style="color: #0893ee;"><?php echo $row4['blog_title']; ?></h4>
+                </a>
+                <p class="text-secondary"><i class="fa-solid fa-tags"></i> <?php echo $row4['cat_title']; ?> &nbsp;&nbsp;
+                    <i class="fa-solid fa-calendar-days"></i> <?php echo date("dF,Y", strtotime($row4['added_on'])); ?>
+                </p>
+                <small>
+                    <?php
+                    $string = strip_tags($row4['blog_desc']);
+                    if (strlen($string) > 50) {
+
+                        // truncate string
+                        $stringCut = substr($string, 0, 50);
+                        $endPoint = strrpos($stringCut, ' ');
+
+                        //if the string doesn't contain any space then it will cut without word basis.
+                        $string = $endPoint ? substr($stringCut, 0, $endPoint) : substr($stringCut, 0);
+                        $string .= '... ';
+                    }
+                    echo $string;
+                    ?>
+                </small>
+            </div>
+            <div class="text-start text-lg-end">
+                <a href="singleblog.php?id=<?php echo $row4['id']; ?>">
+                    <button style="border: none; background-color: #0893ee; color: white;" class="p-1 mt-2">Read More</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+    }
+} else {
+?>
+
+
+
+<div class="col-12 col-lg-8 col-md-12 col-sm-12 ">
+ <img src="assets/images/nodata/no-data-concept-illustration_114360-536.webp" alt="" class="img-fluid">
+</div>
+<?php
+}
+?>
+
+
+</div>
+<?php
+}else {
 
         
         ?>
@@ -90,7 +163,7 @@ if (isset($_GET['page'])) {
                 <div class="card p-4">
                     <div class="row">
                         <div class="col-12 col-lg-4 col-md-12 col-sm-12">
-                            <img src="Admin/BlogImages/<?php echo $row['blog_image']; ?>" alt="" class="img-fluid">
+                            <img src="Admin/BlogImages/<?php echo $row['blog_image']; ?>" alt="<?php echo $row4['alt']; ?>" class="img-fluid">
                         </div>
                         <div class="col-12 col-lg-8 col-md-12 col-sm-12">
                             <div class="text">
@@ -128,51 +201,6 @@ if (isset($_GET['page'])) {
 
             <?php } ?>
 
-            <!-- <div class="card p-4">
-                <div class="row">
-                    <div class="col-12 col-lg-4 col-md-12 col-sm-12">
-                        <img src="assets/images/banner/aboutvision.jpg" alt="" class="img-fluid">
-                    </div>
-                    <div class="col-12 col-lg-8 col-md-12 col-sm-12">
-                        <div class="text">
-                            <a href="#" class="text-decoration-none">
-                                <h4 style="color: #0893ee;">Senior Citizen Health Insurance</h4>
-                            </a>
-                            <p class="text-secondary"><i class="fa-solid fa-tags"></i> Health Insurance &nbsp;&nbsp;
-                                <i class="fa-solid fa-calendar-days"></i> 25 jun, 2022
-                            </p>
-                            <small>Senior citizen health insurance is a policy that covers the medical costs...</small>
-                        </div>
-                        <div class="text-start text-lg-end">
-                            <a href="#">
-                                <button style="border: none; background-color: #0893ee; color: white;" class="p-1 mt-2">Read More</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card p-4">
-                <div class="row">
-                    <div class="col-12 col-lg-4 col-md-12 col-sm-12">
-                        <img src="assets/images/banner/mainbanner.jpg" alt="" class="img-fluid">
-                    </div>
-                    <div class="col-12 col-lg-8 col-md-12 col-sm-12">
-                        <div class="text">
-                            <h4 style="color: #0893ee;">What is coronavirus?</h4>
-                            <p class="text-secondary"><i class="fa-solid fa-tags"></i> Health Insurance &nbsp;&nbsp;
-                                <i class="fa-solid fa-calendar-days"></i> 25 jun, 2022
-                            </p>
-                            <small>In December 2019, Wuhan, China was the source of a group...</small>
-                        </div>
-                        <div class="text-start text-lg-end">
-                            <a href="#">
-                                <button style="border: none; background-color: #0893ee; color: white;" class="p-1 mt-2">Read More</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
         </div>
         <?php }?>
         <div class="col-12 col-lg-4 col-md-12 col-sm-12">
@@ -190,22 +218,7 @@ if (isset($_GET['page'])) {
                     <h4>Recent Post</h4>
                 </div>
 
-                <!-- <div class="row mt-2">
-                    <div class="col-12 col-lg-4 col-md-12 col-sm-12">
-                        <img src="assets/images/cards/claim-image.png" alt="" class="img-fluid">
-                    </div>
-                    <div class="col-12 col-lg-8 col-md-12 col-sm-12">
-                        <div class="text">
-                            <a href="#" class="text-decoration-none">
-                                <h4 style="color: #0893ee;">Lorem</h4>
-                            </a>
-                            <p class="text-secondary" style="font-size: 0.8rem;"><i class="fa-solid fa-tags"></i> Term Insurance &nbsp;&nbsp;
-                                <i class="fa-solid fa-calendar-days"></i> 25 jun, 2022
-                            </p>
-                            <small>Lorem ipsum dolor sit amet..</small>
-                        </div>
-                    </div>
-                </div> -->
+        
             </div>
 
             <?php
@@ -217,7 +230,7 @@ if (isset($_GET['page'])) {
                 <div class="card p-3">
                     <div class="row">
                         <div class="col-12 col-lg-4 col-md-12 col-sm-12">
-                            <img src="Admin/BlogImages/<?php echo $row1['blog_image']; ?>" alt="" class="img-fluid">
+                            <img src="Admin/BlogImages/<?php echo $row1['blog_image']; ?>" alt="<?php echo $row1['alt']; ?>" class="img-fluid">
                         </div>
                         <div class="col-12 col-lg-8 col-md-12 col-sm-12">
                             <div class="text">

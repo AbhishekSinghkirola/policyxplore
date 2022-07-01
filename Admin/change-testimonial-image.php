@@ -22,7 +22,7 @@ if(isset($_POST['submit'])) {
     $image_type = $_FILES['testimonial_image']['type'];
 
     if($image_type!='') {
-        if($image_type!='image/png' && $image_type!='image/jpg' && $image_type!='image/jpeg'){
+        if($image_type!='image/png' && $image_type!='image/jpg' && $image_type!='image/jpeg' && $image_type!='image/webp'){
             $msg="Please select only png,jpg and jpeg image formate";
         }else{
             if($testimonial_image != '') {

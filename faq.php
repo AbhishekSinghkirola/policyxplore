@@ -13,14 +13,14 @@ require("header.php");
 
     <div class="container mt-5 pb-5" style="width: 80%;">
     <?php 
-        $res = mysqli_query($con,"select * from faq order by faq_id") or die("Select Query Failed!!");
+        $res = mysqli_query($con,"select * from faq_page order by id") or die("Select Query Failed!!");
         while($row = mysqli_fetch_assoc($res)) {
 
         
     ?>
 
-        <h4 class="mt-5 text-dark"><i class="fa-solid fa-circle-question"></i> <?php echo $row['question'];?></h4>
-        <p class="mt-3"><?php echo $row['solution'];?> </p>
+        <h4 class="mt-5 text-dark"><i class="fa-solid fa-circle-question"></i> <?php echo $row['faqp_question'];?></h4>
+        <p class="mt-3"><?php echo $row['faqp_solution'];?> </p>
             <?php
         }
             ?>

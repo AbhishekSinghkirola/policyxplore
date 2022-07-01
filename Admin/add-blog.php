@@ -7,19 +7,23 @@ $no_of_post = '';
 if (isset($_POST['submit'])) {
     // prx($_POST);
     $blog_title = get_safe_value($con, $_POST['blog_title']);
+    $alt = get_safe_value($con, $_POST['alt']);
     $blog_desc = get_safe_value($con, $_POST['blog_desc']);
     $added_on = get_safe_value($con, $_POST['added_on']);
     $category = get_safe_value($con, $_POST['category']);
+    $meta_title = get_safe_value($con, $_POST['meta_title']);
+    $meta_desc = get_safe_value($con, $_POST['meta_desc']);
+    $meta_keyword = get_safe_value($con, $_POST['meta_keyword']);
 
     // prx($_FILES);
     $blog_image = $_FILES['blog_image']['name'];
     $image_type = $_FILES['blog_image']['type'];
 
     if ($image_type != '') {
-        if ($image_type != 'image/png' && $image_type != 'image/jpg' && $image_type != 'image/jpeg') {
+        if ($image_type != 'image/png' && $image_type != 'image/jpg' && $image_type != 'image/jpeg' && $image_type != 'image/webp') {
             $msg = "Please select only png,jpg and jpeg image formate";
         } else {
-            $res = mysqli_query($con, "insert into blog(blog_title,blog_desc,added_on,blog_image,category) values('$blog_title','$blog_desc','$added_on','$blog_image','$category') ") or die("Insert Query Failed!!");
+            $res = mysqli_query($con, "insert into blog(blog_title,blog_desc,added_on,blog_image,category,meta_title,meta_desc,meta_keyword,alt) values('$blog_title','$blog_desc','$added_on','$blog_image','$category','$meta_title','$meta_desc','$meta_keyword','$alt') ") or die("Insert Query Failed!!");
             if ($res) {
                 move_uploaded_file($_FILES['blog_image']['tmp_name'], "BlogImages/$blog_image");
 
@@ -70,9 +74,15 @@ if ($msg != '') {
 
                     </div>
                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-name">Alternative Text</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="basic-default-name" name="alt" required />
+                        </div>
+                    </div>
+                    <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-message">Description</label>
                         <div class="col-sm-10">
-                            <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="blog_desc" required></textarea>
+                            <textarea id="editor" class="form-control" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="blog_desc" required></textarea>
                         </div>
                     </div>
 
@@ -108,6 +118,24 @@ if ($msg != '') {
                         </div>
                     </div>
 
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-message">Meta Title</label>
+                        <div class="col-sm-10">
+                            <textarea id="basic-default-message" class="form-control" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="meta_title" ></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-message">Meta Description</label>
+                        <div class="col-sm-10">
+                            <textarea id="basic-default-message" class="form-control" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="meta_desc"></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-message">Meta Keyword</label>
+                        <div class="col-sm-10">
+                            <textarea id="basic-default-message" class="form-control" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="meta_keyword"></textarea>
+                        </div>
+                    </div>
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-primary" name="submit" style="background-color: #008bd3;">Add</button>

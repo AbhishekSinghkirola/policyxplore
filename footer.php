@@ -39,20 +39,25 @@
                 </div>
                 <div class="col-12 col-lg-3 col-md-6 col-sm-12">
                     <h5><b>FOLLOW US</b></h5>
+
+                    <?php
+                        $sql = mysqli_query($con,"select * from social_links") or die("select Query Failed");
+                        $row_social = mysqli_fetch_assoc($sql);
+                    ?>
                     <p class="mt-4 pb-2" style="border-bottom: 1px solid rgb(80, 80, 80);">
-                        <i class="fab fa-instagram"></i><a href="https://www.instagram.com/policyxplore/?hl=en">&nbsp;&nbsp;Instagram</a>
+                        <i class="fab fa-instagram"></i><a href="<?php echo $row_social['instagram']; ?>">&nbsp;&nbsp;Instagram</a>
                     </p>
                     <p class="mt-4 pb-2" style="border-bottom: 1px solid rgb(80, 80, 80);">
-                        <i class="fab fa-facebook-f"></i><a href="https://www.facebook.com/Policyxplore/">&nbsp;&nbsp;Facebook</a>
+                        <i class="fab fa-facebook-f"></i><a href="<?php echo $row_social['facebook']; ?>">&nbsp;&nbsp;Facebook</a>
                     </p>
                     <p class="mt-4 pb-2" style="border-bottom: 1px solid rgb(80, 80, 80);">
-                        <i class="fab fa-twitter"></i><a href="https://twitter.com/Policyxplore1">&nbsp;&nbsp;Twitter</a>
+                        <i class="fab fa-twitter"></i><a href="<?php echo $row_social['twitter']; ?>">&nbsp;&nbsp;Twitter</a>
                     </p>
                     <p class="mt-4 pb-2" style="border-bottom: 1px solid rgb(80, 80, 80);">
-                        <i class="fab fa-linkedin-in"></i><a href="https://www.linkedin.com/in/policy-xplore-809246173/?originalSubdomain=in">&nbsp;&nbsp;Linkedin</a>
+                        <i class="fab fa-linkedin-in"></i><a href="<?php echo $row_social['linkedin']; ?>">&nbsp;&nbsp;Linkedin</a>
                     </p>
                     <p class="mt-4 pb-2" style="border-bottom: 1px solid rgb(80, 80, 80);">
-                        <i class="fa-brands fa-youtube"></i><a href="https://www.youtube.com/channel/UCWGQMiStgnuhAGVUN95kbiw">&nbsp;&nbsp;Youtube</a>
+                        <i class="fa-brands fa-youtube"></i><a href="<?php echo $row_social['youtube']; ?>">&nbsp;&nbsp;Youtube</a>
                     </p>
 
                 </div>
@@ -104,6 +109,22 @@ s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
+<script type = "text/javascript" >  
+ tinymce.init({  
+  selector: 'textarea',  
+  width: 500  
+ });
+ </script>
+ <script src="">
+  
+  $(document).ready(function() {  
+ $('#btnValue').click(function() {  
+  $("#divkarea").html("");  
+  var content = tinymce.get("txtarea").getContent();  
+  $("#divkarea").html(content);  
+ });  
+});   
+ </script>  
 <!--End of Tawk.to Script-->
 
 

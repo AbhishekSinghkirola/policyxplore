@@ -7,6 +7,7 @@ $no_of_post = '';
 if (isset($_POST['submit'])) {
     // prx($_POST);
     $testimonial_title = get_safe_value($con, $_POST['testimonial_title']);
+    $alt = get_safe_value($con, $_POST['alt']);
     $author = get_safe_value($con, $_POST['author']);
 
     // prx($_FILES);
@@ -14,10 +15,10 @@ if (isset($_POST['submit'])) {
     $image_type = $_FILES['testimonial_image']['type'];
 
     if ($image_type != '') {
-        if ($image_type != 'image/png' && $image_type != 'image/jpg' && $image_type != 'image/jpeg') {
+        if ($image_type != 'image/png' && $image_type != 'image/jpg' && $image_type != 'image/jpeg' && $image_type != 'image/webp') {
             $msg = "Please select only png,jpg and jpeg image formate";
         } else {
-            $res = mysqli_query($con, "insert into testimonial(`testimonial_title`, `testimonial_image`, `author`) values('$testimonial_title','$testimonial_image','$author') ") or die("Insert Query Failed!!");
+            $res = mysqli_query($con, "insert into testimonial(`testimonial_title`, `testimonial_image`, `author`, `alt`) values('$testimonial_title','$testimonial_image','$author','$alt') ") or die("Insert Query Failed!!");
             if ($res) {
                 move_uploaded_file($_FILES['testimonial_image']['tmp_name'], "TestimonialImages/$testimonial_image");
 
@@ -63,6 +64,12 @@ if ($msg != '') {
                             <input class="form-control" type="file" id="formFile" name="testimonial_image" required>
                         </div>
 
+                    </div>
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-name">Alternative Text</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="basic-default-name" name="alt" required />
+                        </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-name">Author</label>

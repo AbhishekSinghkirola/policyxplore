@@ -17,13 +17,18 @@
 
     if(isset($_POST['submit'])) {
         $blog_title=get_safe_value($con,$_POST['blog_title']);
+        $alt=get_safe_value($con,$_POST['alt']);
         $blog_desc=get_safe_value($con,$_POST['blog_desc']);
         $added_on=get_safe_value($con,$_POST['added_on']);
         $category=get_safe_value($con,$_POST['category']);
+        $meta_title = get_safe_value($con, $_POST['meta_title']);
+        $meta_desc = get_safe_value($con, $_POST['meta_desc']);
+        $meta_keyword = get_safe_value($con, $_POST['meta_keyword']);
+    
         
         $old_category = get_safe_value($con,$_POST['old_category']);
         
-        mysqli_query($con,"update blog set blog_title='$blog_title',blog_desc='$blog_desc',added_on='$added_on',category='$category' where id = $id") or die("Update Qquery Failed!!");
+        mysqli_query($con,"update blog set blog_title='$blog_title',blog_desc='$blog_desc',added_on='$added_on',category='$category',meta_title='$meta_title',meta_desc='$meta_keyword',meta_keyword='$meta_desc',alt='$alt' where id = $id") or die("Update Qquery Failed!!");
 
         if($old_category != $category) {
             $sql=mysqli_query($con,"select * from category where cat_id = $category");
@@ -59,6 +64,12 @@
                         </div>
 
                     </div>
+                     <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-name">Alternative Text</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="basic-default-name" name="alt" value="<?php echo $row['alt']; ?>" />
+                        </div>
+                    </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-name">Title</label>
                         <div class="col-sm-10">
@@ -75,7 +86,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-message">Description</label>
                         <div class="col-sm-10">
-                            <textarea id="basic-default-message" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="blog_desc" required><?php echo $row['blog_desc']; ?></textarea>
+                            <textarea id="editor" class="form-control" placeholder="Hi, Do you have a moment to talk Joe?" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="blog_desc" required><?php echo $row['blog_desc']; ?></textarea>
                         </div>
                     </div>
 
@@ -112,6 +123,26 @@
                           <input class="form-control" type="datetime-local" value="2021-06-18T12:30:00" id="html5-datetime-local-input" name="added_on" value="<?php echo $row['added_on']; ?>" >
                         </div>
                       </div>
+
+                      <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-message">Meta Title</label>
+                        <div class="col-sm-10">
+                            <textarea id="basic-default-message" class="form-control" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="meta_title" ><?php  echo $row['meta_title'];?></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-message">Meta Description</label>
+                        <div class="col-sm-10">
+                            <textarea id="basic-default-message" class="form-control" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="meta_desc" ><?php  echo $row['meta_desc'];?></textarea>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-message">Meta Keyword</label>
+                        <div class="col-sm-10">
+                            <textarea id="basic-default-message" class="form-control" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2" name="meta_keyword" ><?php  echo $row['meta_keyword'];?></textarea>
+                        </div>
+                    </div>
+
 
                     <div class="row justify-content-end">
                         <div class="col-sm-10">

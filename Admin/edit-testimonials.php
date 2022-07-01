@@ -17,6 +17,7 @@
 
     if(isset($_POST['submit'])) {
         $testimonial_title=get_safe_value($con,$_POST['testimonial_title']);
+        $alt=get_safe_value($con,$_POST['alt']);
         $author=get_safe_value($con,$_POST['author']);
        
         
@@ -47,6 +48,12 @@
                             <a href="change-testimonial-image.php?id=<?php echo $id; ?>" class="ms-2">Change Image</a>
                         </div>
 
+                    </div>
+                    <div class="row mb-3">
+                        <label class="col-sm-2 col-form-label" for="basic-default-name">Alternative Text</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="basic-default-name" name="alt" value='<?php echo $row['alt']; ?>' />
+                        </div>
                     </div>
                     <div class="row mb-3">
                         <label class="col-sm-2 col-form-label" for="basic-default-name">Title</label>

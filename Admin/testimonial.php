@@ -9,7 +9,7 @@ $res = mysqli_query($con, $sql);
 
 <div class="card">
     <div class="d-block d-md-flex justify-content-between align-items-center w-100">
-        <h5 class="card-header">Teestimonials</h5>
+        <h5 class="card-header">Testimonials</h5>
         <a href="add-testimonials.php" class="btn btn-primary ms-3 me-md-2" style="background-color: #008bd3;">Add New Testimoniaal Details</a>
     </div>
     <div class="table-responsive text-nowrap">
